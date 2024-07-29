@@ -1,15 +1,13 @@
 import '/src/css/style.css'
-import { setupCounter } from '/src/js/counter.js'
 
 document.querySelector('#app').innerHTML = `
-  <div>
-    <h1>Hello Word</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Clica ai disgrama 
-    </p>
+  <div class = "notas">
+      <div class = "barra__de__Divisao">
+        <button class = "botao_Adicionar" type- "button">Adicionar Nota</button>
+        <div class = "lista_notas">
+  
+        </div>
+      </div>
+      <div class =
   </div>
 `
-setupCounter(document.querySelector('#counter'))
