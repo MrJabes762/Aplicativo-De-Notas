@@ -2,8 +2,7 @@ html,
 body {
     height: 100%;
     margin: 0;
-    background-color: #086017;
-    opacity: 2;
+    background-color: #085e16;
 }
 
 .notas {
@@ -12,32 +11,37 @@ body {
 }
 
 .notas * {
-    font-family: sans-serif;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 .barra__de__Divisao {
-    border-right: 2px solid white;
+    border-right: 7px solid #549760;
     flex-shrink: 0;
     overflow-y: auto;
-    padding: 1em;
+    padding: 1.4em;
     width: 300px;
 }
 
 .botao_Adicionar {
     background: #168128;
     border: none;
-    border-radius: 7px;
+    border-radius: 17px;
     color: white;
     cursor: pointer;
     font-size: 1.25em;
     font-weight: bold;
     margin-bottom: 1em;
-    padding: 0.75em 0;
+    padding: 0.8em 0;
     width: 100%;
+    border: 4px solid #549760 ;
 }
 
-.botao_Adicionar:hover {
+.botao_Adicionar:hover {/*Quando o Mouse Aparecer em Cima*/
     background: #4ab64a;
+}
+.botao_Adicionar:active{ /*quando o botao for clicado*/
+    transform:scale(0.88);
+    color: #e4eee4;
 }
 
 .lista-notas-item {
@@ -50,48 +54,54 @@ body {
     font-weight: bold;
 }
 
-.notes__small-title,
-.notes__small-updated {
+.notas_pequenas-titulo,
+.notas_pequenas-salvas {
     padding: 10px;
 }
 
-.notes__small-title {
+.notas_pequenas-titulo {
     font-size: 1.2em;
 }
 
-.notes__small-body {
+.notas_pequenas-corpo {
     padding: 0 10px;
 }
 
-.notes__small-updated {
+.notas_pequenas-salvas {
     color: #aaaaaa;
     font-style: italic;
     text-align: right;
 }
 
-.notes__preview {
+.notas_visualizacao {
     display: flex;
     flex-direction: column;
     padding: 2em 3em;
     flex-grow: 1;
 }
 
-.notes__title,
-.notes__body {
+.notas_titulo,
+.notas_corpo {
     border: none;
     outline: none;
     width: 100%;
 }
 
-.notes__title {
+.notas_titulo {
     font-size: 3em;
     font-weight: bold;
 }
 
-.notes__body {
+.notas_corpo {
     flex-grow: 1;
     font-size: 1.2em;
     line-height: 1.5;
     margin-top: 2em;
     resize: none;
 }
+footer {
+    background-color: #3c681f;
+    color: rgb(85, 235, 16);
+    text-align: center;
+    padding: 1rem;
+  }
