@@ -22,7 +22,7 @@ export default class NotasView {
         const pegaDescricao = this.root.querySelector(".notas_corpo");
 
         if (btnAddNota) {
-            btnAddNota.addEventListener("click", () => { // Pegando o clic do botão e retornando a adiçao no main
+            btnAddNota.addEventListener("click", () => {
                 if (this.notaAdicionada) {
                     this.notaAdicionada();
                 } else {
@@ -33,7 +33,7 @@ export default class NotasView {
             console.error("O botão Adicionar Nota não foi encontrado.");
         }
 
-        [pegaTitulo, pegaDescricao].forEach(pegaCampo => { //Pefa o titulo e a descricao para editar
+        [pegaTitulo, pegaDescricao].forEach(pegaCampo => {
             pegaCampo.addEventListener("blur", () => {
                 const tituloAdicionado = pegaTitulo.value.trim();
                 const descricaoAdicionada = pegaDescricao.value.trim();
@@ -45,19 +45,35 @@ export default class NotasView {
             });
         });
     }
-    _criarListaDeItemsHTML(id,titulo, corpo, data){// essa função recebe as informações para exibir a lista na tela
+
+    _criarListaDeItemsHTML(id, titulo, corpo, data) {
         const TAMANHO_DO_CORPO = 60;
         return `
-            <div class = "notas_lista-item" data-nota-id = "${id}">
-                <div class = "notas_pequenas-titulo">${titulo}</div>
-                <div class = "notas_pequenas-corpo ">
+            <div class="notas_lista-item" data-nota-id="${id}">
+                <div class="notas_pequenas-titulo">${titulo}</div>
+                <div class="notas_pequenas-corpo">
                     ${corpo.substring(0, TAMANHO_DO_CORPO)}
-                    ${corpo.lenght > TAMANHO_DO_CORPO ?"..." : ""}
+                    ${corpo.length > TAMANHO_DO_CORPO ? "..." : ""}
                 </div>
-                <div class = "notas_pequenas-salvas">
-                    ${data.toLocaleString(undefined, {dataStyle: "full",timeStyle:"short"})}
+                <div class="notas_pequenas-salvas">
+                    ${data.toLocaleString(undefined, { dateStyle: "full", timeStyle: "short" })}
                 </div>
             </div>
         `;
+    }
+
+    subirNotasLista(notas) {
+        const containerListaContainer = this.root.querySelector(".notas_lista");
+        containerListaContainer.innerHTML = "";
+        for (const nota of notas) {
+            const html = this._criarListaDeItemsHTML(nota.id, nota.titulo, nota.corpo || "", new Date(nota.data));
+            containerListaContainer.insertAdjacentHTML("beforeend", html);
+        }
+
+        containerListaContainer.querySelectorAll(".notas_lista-item").forEach(listaDeItensDeNotas => {
+            listaDeItensDeNotas.addEventListener("click", () => {
+                this.notaSelecionada(listaDeItensDeNotas.dataset.notaId);
+            });
+        });
     }
 }

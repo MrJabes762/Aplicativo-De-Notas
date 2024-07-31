@@ -41,19 +41,27 @@ body {
 }
 
 .botao_Adicionar:hover {/*Quando o Mouse Aparecer em Cima*/
-    background: rgb(158, 152, 152);
+    background: rgb(218, 212, 212);
 }
 .botao_Adicionar:active{ /*quando o botao for clicado*/
     transform:scale(0.88);
-    color: #e4eee4;
+    color: gray;
 }
 
 .notas_lista-item {
     cursor: pointer;
     border: 2px solid black;
+    border-radius: 15px;
+    padding: auto;
+    background-color: white;
+    opacity: 0.65;
+    margin-bottom: 10px;
+    transform:scale(0.95);
 }
-
-.notas_lista-item--selecionada {
+.notas_lista-item:hover{
+    background: rgb(218, 212, 212);
+}
+.notas_lista-item:active {
     background: white;
     border-radius: 15px;
     font-weight: bold;
@@ -99,6 +107,8 @@ body {
     background-color: white;
     opacity: 0.5;
     border-radius: 15px;
+    padding-left: 15px;
+    border: 2px solid black;
 }
 
 .notas_titulo {
