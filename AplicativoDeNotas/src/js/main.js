@@ -1,9 +1,13 @@
-import NotasAPI from './NotasAPI.js'
+import NotasView from './NotasView.js';
 
-NotasAPI.salvaNotas ({
-  id:436868,// a criação de uma lista de notas ja usando a API
-  titulo:"Essa nota foi modificada",
-  corpo: "Eu sou uma nova nota",
+const app = document.getElementById('app'); // Pegando o contexto do App/ documento 
+// Passando ele pra dentro do Objeto NotasView
+const view = new NotasView(app, {
+    notaAdicionada() {
+        console.log("Essa nota foi adicionada");
+    },
+    notaEditada(novoTitulo, novoCorpo) {
+        console.log(novoTitulo);
+        console.log(novoCorpo);
+    }
 });
-
-console.log(NotasAPI.getTodasNotas());
