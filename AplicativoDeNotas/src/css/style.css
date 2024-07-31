@@ -2,7 +2,10 @@ html,
 body {
     height: 100%;
     margin: 0;
-    background-color: #085e16;
+    background-image: url('./catarata.jpg');
+    background-size: cover;
+    background-position: center; 
+    background-repeat: no-repeat;/*Colocando uma imagem de fundo centralizada que não se repita e cubra todo o espaço*/
 }
 
 .notas {
@@ -15,7 +18,7 @@ body {
 }
 
 .barra__de__Divisao {
-    border-right: 7px solid #549760;
+    border-right: 7px solid whitesmoke;
     flex-shrink: 0;
     overflow-y: auto;
     padding: 1.4em;
@@ -23,21 +26,22 @@ body {
 }
 
 .botao_Adicionar {
-    background: #168128;
+    background: white;
     border: none;
     border-radius: 17px;
-    color: white;
+    color: black;
     cursor: pointer;
     font-size: 1.25em;
     font-weight: bold;
     margin-bottom: 1em;
     padding: 0.8em 0;
     width: 100%;
-    border: 4px solid #549760;
+    opacity: 0.5;
+    border: 2px solid black;
 }
 
 .botao_Adicionar:hover {/*Quando o Mouse Aparecer em Cima*/
-    background: #4ab64a;
+    background: rgb(158, 152, 152);
 }
 .botao_Adicionar:active{ /*quando o botao for clicado*/
     transform:scale(0.88);
@@ -46,15 +50,16 @@ body {
 
 .notas_lista-item {
     cursor: pointer;
-    border: 4px solid #a4c7ab;
+    border: 2px solid black;
 }
 
 .notas_lista-item--selecionada {
-    background: #168128;
+    background: white;
     border-radius: 15px;
     font-weight: bold;
-    border: 4px solid #549760;
     transform:scale(0.90);
+    opacity: 0.5;
+    border: 2px solid black;
 }
 
 .notas_pequenas-titulo,
@@ -64,16 +69,17 @@ body {
 
 .notas_pequenas-titulo {
     font-size: 1.2em;
-    color: #15f13d;
+    color: black;
+    font-style: bold;
 }
 
 .notas_pequenas-corpo {
     padding: 0 10px;
-    color: rgb(22, 189, 22);
+    color: rgb(63, 59, 59);
 }
 
 .notas_pequenas-salvas {
-    color: #f7f5f5;
+    color: black;
     font-style: italic;
     text-align: right;
 }
@@ -90,13 +96,15 @@ body {
     border: none;
     outline: none;
     width: 100%;
-    background-color: #085E16;
+    background-color: white;
+    opacity: 0.5;
+    border-radius: 15px;
 }
 
 .notas_titulo {
     font-size: 3em;
     font-weight: bold;
-    color: #15f13d;
+    color: black;
 }
 
 .notas_corpo {
@@ -105,11 +113,11 @@ body {
     line-height: 1.5;
     margin-top: 2em;
     resize: none;
-    color: rgb(22, 189, 22);
+    color: black;
 }
 footer {
-    background-color: #3c681f;
+    background-color: #168128;
     color: rgb(85, 235, 16);
     text-align: center;
     padding: 1rem;
-  }
+}
