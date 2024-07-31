@@ -25,6 +25,9 @@ export default class NotasAPI {
     }
 
     static deletarNotas(id) {
-        // Implementação da função deletarNotas
+        const notas = NotasAPI.getTodasNotas();
+        const novaNota = notas.filter(nota => nota.id != id);// filtrando a nota que vai deletar a partir do ID
+        localStorage.setItem("aplicativodenotas", JSON.stringify(novaNota)); // Salvando o array de notas no localStorage
+
     }
 }
