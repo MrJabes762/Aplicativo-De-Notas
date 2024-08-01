@@ -1,32 +1,29 @@
 export default class NotasAPI {
-    static getTodasNotas() {//provalemntente um metodo de classe 
-        const notas = JSON.parse(localStorage.getItem("aplicativodenotas") || "[]"); // Pegando as notas do localStorage
-        return notas.sort((a, b) => { // Ordenando as notas pela data
-            return new Date(a.salva) > new Date(b.salva) ? -1 : 1;
-        });
+    static getTodasNotas() {//Metodo Estatico de Classe que pega todas as notas do armazenamento 
+        const notas = JSON.parse(localStorage.getItem("aplicativodenotas") || "[]");// pega as notas 
+        return notas.sort((a, b) => new Date(b.salva) - new Date(a.salva)); // retorna elas ja ordenadas em uma function
     }
 
-    static salvaNotas(notaPraSalvar) { // Salvando uma nova nota
-        const notas = NotasAPI.getTodasNotas(); // Recebendo todas as notas existentes
-        const alterar = notas.find(nota => nota.id == notaPraSalvar);//realizando a comparação pra saber uma alteração de data
+    static salvaNotas(notaPraSalvar) {// Esse metodo Estatico recebe a nota de entrada que deseja salvar e lança ela no banco 
+        const notas = NotasAPI.getTodasNotas();
+        const alterar = notas.find(nota => nota.id == notaPraSalvar.id);// verifica a existencia de uma nota igual no banco e ja altera ela
 
-        //editando a data 
-        if (alterar){
+        if (alterar) {
             alterar.titulo = notaPraSalvar.titulo;
             alterar.corpo = notaPraSalvar.corpo;
-            alterar.salva = new Date ().toISOString();
-
-        }else{
-            notaPraSalvar.id = Math.floor(Math.random() * 1000000); // Gerando um ID aleatório
-            notaPraSalvar.salva = new Date().toISOString(); // Salvando a data atual
-            notas.push(notaPraSalvar); // Adicionando a nova nota ao array de notas
-            localStorage.setItem("aplicativodenotas", JSON.stringify(notas)); // Salvando o array de notas no localStorage
+            alterar.salva = new Date().toISOString();
+        } else {
+            notaPraSalvar.id = Math.floor(Math.random() * 1000000);
+            notaPraSalvar.salva = new Date().toISOString();
+            notas.push(notaPraSalvar);
         }
+
+        localStorage.setItem("aplicativodenotas", JSON.stringify(notas));
     }
 
-    static deletarNotas(id) {
+    static deletarNotas(id) {// Esse metodo Estatico deleta todas as notas pelo ID da nota recebido 
         const notas = NotasAPI.getTodasNotas();
-        const novaNota = notas.filter(nota => nota.id != id);// filtrando a nota que vai deletar a partir do ID
-        localStorage.setItem("aplicativodenotas", JSON.stringify(novaNota)); // Salvando o array de notas no localStorage
+        const novaNota = notas.filter(nota => nota.id != id);
+        localStorage.setItem("aplicativodenotas", JSON.stringify(novaNota));
     }
 }
