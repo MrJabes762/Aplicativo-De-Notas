@@ -61,7 +61,7 @@ body {
 .notas_lista-item:hover{
     background: rgb(218, 212, 212);
 }
-.notas_lista-item:active {
+.notas_lista-item--selecionada:active {
     background: white;
     border-radius: 15px;
     font-weight: bold;
