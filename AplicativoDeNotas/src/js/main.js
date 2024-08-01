@@ -14,6 +14,9 @@ const view = new NotasView(app, {
         console.log(novoTitulo);
         console.log(novoCorpo);
     },
+    notaDeletada (id){
+        console.log ("Nota Deletada", id)
+    }
 });
 
 view.subirNotasLista(NotasAPI.getTodasNotas());

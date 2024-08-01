@@ -62,18 +62,27 @@ export default class NotasView {
         `;
     }
 
-    subirNotasLista(notas) {
-        const containerListaContainer = this.root.querySelector(".notas_lista");
-        containerListaContainer.innerHTML = "";
+    subirNotasLista(notas) {//metodo q recebe a nota e e aDiciona nota ao fim da proxima
+        const containerListaNotas = this.root.querySelector(".notas_lista");
+        containerListaNotas.innerHTML = "";
         for (const nota of notas) {
             const html = this._criarListaDeItemsHTML(nota.id, nota.titulo, nota.corpo || "", new Date(nota.data));
-            containerListaContainer.insertAdjacentHTML("beforeend", html);
+            containerListaNotas.insertAdjacentHTML("beforeend", html);
         }
 
-        containerListaContainer.querySelectorAll(".notas_lista-item").forEach(listaDeItensDeNotas => {
+        containerListaNotas.querySelectorAll(".notas_lista-item").forEach(listaDeItensDeNotas => {// metodo para a nota selecionada pegando o ID
             listaDeItensDeNotas.addEventListener("click", () => {
                 this.notaSelecionada(listaDeItensDeNotas.dataset.notaId);
             });
+            
+            listaDeItensDeNotas.addEventListener ("dblclick", () => {//essa função deleta aquela nota que clicar 2 vezes 
+                const doDelete = confirm ("Você quer mesmo Deletar a nota ?");
+                
+                if (doDelete) {
+                    this.notaDeletada(listaDeItensDeNotas.dataset.notaId);
+                }
+            });
         });
+        
     }
 }
