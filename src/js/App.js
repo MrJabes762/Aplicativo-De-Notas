@@ -6,7 +6,7 @@ export default class App {
         this.notas = [];
         this.notaAtiva = null;
         this.view = new NotasView(root, this._handlers());
-
+        
         this._atualizarNotas();
     }
 
